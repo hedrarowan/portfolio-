@@ -38,6 +38,8 @@ export default function robotsReducer(state = initialState, action) {
     case SET_ROBOTS:
       const robots = action.robots;
       return robots;
+    case ROBOT_ERROR:
+      console.log("There was a problem fetching your robots");
     default:
       return initialState;
   }
