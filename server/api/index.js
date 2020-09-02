@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Robot, Project } = require("../db");
+const project = require("../db/project");
 
 // Your routes go here!
 // NOTE: Any routes that you put here are ALREADY mounted on `/api`
@@ -42,20 +43,35 @@ router.get("/projects", async (req, res, next) => {
 
 router.get("/robots/:robotId", async (req, res, next) => {
   try {
-    console.log(req.params, "im rick");
-    const robotId = req.params;
-    // console.log(req);
-    // console.log(robotId);
+    // console.log(req.body, "im rick");
+    const robotId = await req.params.robotId;
     const robot = await Robot.findAll({
       where: { id: robotId },
-      include: Project.findAll({
-        where: {
-          robotId: robotId,
-        },
-      }),
     });
-    console.log("HELLO", robot);
+
     res.send(robot);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.get("/robots/:robotId/projects", async (req, res, next) => {
+  try {
+    const robotId = await req.params.robotId;
+    const robot = await Robot.findAll({
+      where: { id: robotId },
+    });
+    const projectId = robot[0].projectId;
+
+    if (projectId === null) {
+      res.send("No Projects Currently");
+    } else {
+      const projects = await Project.findAll({
+        where: { id: projectId },
+      });
+
+      res.send(projects);
+    }
   } catch (error) {
     console.log(error);
   }

@@ -1,20 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 // import { Robot, Project } from "../../server/db";
-// import { fetchRobot } from "../redux/singleRobot";
-// import { connect } from "react-redux";
+import { fetchProjects } from "../redux/singleRobot";
+import { connect } from "react-redux";
+import Axios from "axios";
 // import robot from "../../server/db/robot";
 
 const SingleRobot = (props) => {
-  const robotId = props.robot.id;
-  const robot = props.robot;
-  console.log(robotId);
-  console.log(props, "PROPS");
+  let robotId;
+  let robot;
+
+  if (props.robot !== undefined) {
+    robotId = props.robot.id;
+    robot = props.robot;
+    console.log(props, "THESE PROPS");
+  } else if (props.match !== undefined) {
+    robotId = props.match.params.robotId;
+    robot = {
+      name: "badger",
+      imageUrl: "www.happy.com",
+      fuelType: "gas",
+      fuelLevel: 10,
+    };
+    console.log(props.dispatch, "PROPS");
+  } else {
+    return <div>The Robot Does Not Exist</div>;
+  }
+
+  console.log("IM ROBOT ID", robotId);
 
   // componentDidMount() {
   //   const robotId = props.match.params.robotId;
   //   const fetchedRobot = props.getRobot(robotId);
   //   console.log(fetchedRobot);
+  // }
+
+  // console.log(props.getProjects(robotId), "BONOININ");
+
+  // useEffect(() => {
+  //   props.getProjects(robotId);
+  //   console.log(getProjects);
   // }
 
   //   console.log(fetchedRobot);
@@ -40,7 +65,7 @@ const SingleRobot = (props) => {
       /* <h3>Fuel Type: {robot.fuelType}</h3>
       <h3>Fuel Level: {robot.fuelLevel}</h3>
       <p>Projects</p>
-      {projects.length < 0 || projects === undefined ? (
+      {/* {projects.length < 0 || projects === undefined ? (
         <h1>Sorry, No Projects at this Time</h1>
       ) : (
         <ul>
@@ -50,30 +75,27 @@ const SingleRobot = (props) => {
             </div>
           ))}
         </ul>
-      )}{" "}
-      */
+      )} */}
     </div>
   );
 
   // }
 };
-// const mapStateToProps = (state) => {
-//   return {
-//     robots: state.robots,
-//   };
-// };
+const mapStateToProps = (state) => {
+  return {
+    robots: state.robots,
+  };
+};
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     getRobot: () => dispatch(fetchRobot()),
-//   };
-// };
+function mapDispatchToProps(dispatch) {
+  return {
+    getProjects: (robotId) => dispatch(fetchProjects(robotId)),
+  };
+}
 
-// export const connectedRobot = connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(SingleRobot);
-
-// export default SingleRobot;
+export const connectedRobot = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SingleRobot);
 
 export default SingleRobot;

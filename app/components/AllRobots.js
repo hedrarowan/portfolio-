@@ -28,7 +28,11 @@ export class AllRobots extends React.Component {
           <ul>
             {this.props.robots.map((robot, index) => (
               <li className="single-robot" key={this.props.robots[index].id}>
-                <SingleRobot robot={this.props.robots[index]} key={index} />
+                <SingleRobot
+                  robot={this.props.robots[index]}
+                  key={index}
+                  {...robot}
+                />
               </li>
             ))}
           </ul>
