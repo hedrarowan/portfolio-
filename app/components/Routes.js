@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import AllRobots from "./AllRobots";
 import AllProjects from "./AllProjects";
+import SingleRobot from "./SingleRobot";
 
 const Routes = () => {
   return (
@@ -17,11 +18,11 @@ const Routes = () => {
           <nav>
             <NavLink to="/"> Home </NavLink>
             <NavLink to="/robots"> Robots </NavLink>
-
             <NavLink to="/projects"> Projects </NavLink>
           </nav>
-          <Route path="/robots" component={AllRobots} />
+          <Route exact path="/robots" component={AllRobots} />
           <Route path="/projects" component={AllProjects} />
+          <Route path="/robots/:robotId" component={SingleRobot} />
         </main>
       </div>
     </Router>

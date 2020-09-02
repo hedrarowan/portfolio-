@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchRobots } from "../redux/robots";
+import robotsReducer, { fetchRobots } from "../redux/robots";
+import SingleRobot from "./SingleRobot";
 
 // Notice that we're exporting the AllRobots component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -15,6 +16,7 @@ export class AllRobots extends React.Component {
 
   async componentDidMount() {
     await this.props.getRobots();
+    console.log("PROPS FRM ALLROBOTS", this.props);
   }
 
   render() {
@@ -22,17 +24,15 @@ export class AllRobots extends React.Component {
       return <h1>"No Robots"</h1>;
     } else {
       return (
-        <ul>
-          {this.props.robots.map((robot) => {
-            return (
-              <li key={robot.id}>
-                <img src={robot.imageUrl} />
-                <span>{robot.name}</span>
-                {/* <span></span> */}
+        <div>
+          <ul>
+            {this.props.robots.map((robot, index) => (
+              <li className="single-robot" key={this.props.robots[index].id}>
+                <SingleRobot robot={this.props.robots[index]} key={index} />
               </li>
-            );
-          })}
-        </ul>
+            ))}
+          </ul>
+        </div>
       );
     }
   }

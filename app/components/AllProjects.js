@@ -14,7 +14,6 @@ export class AllProjects extends React.Component {
   }
 
   async componentDidMount() {
-    console.log(this.props);
     await this.props.getProjects();
   }
 

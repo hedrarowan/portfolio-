@@ -40,6 +40,27 @@ router.get("/projects", async (req, res, next) => {
   }
 });
 
+router.get("/robots/:robotId", async (req, res, next) => {
+  try {
+    console.log(req.params, "im rick");
+    const robotId = req.params;
+    // console.log(req);
+    // console.log(robotId);
+    const robot = await Robot.findAll({
+      where: { id: robotId },
+      include: Project.findAll({
+        where: {
+          robotId: robotId,
+        },
+      }),
+    });
+    console.log("HELLO", robot);
+    res.send(robot);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 router.use((req, res, next) => {
   const err = new Error("API route not found!");
   err.status = 404;
