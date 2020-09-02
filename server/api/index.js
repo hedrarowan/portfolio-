@@ -1,4 +1,5 @@
-const router = require('express').Router()
+const router = require("express").Router();
+const { Robot, Project } = require("../db");
 
 // Your routes go here!
 // NOTE: Any routes that you put here are ALREADY mounted on `/api`
@@ -17,10 +18,32 @@ const router = require('express').Router()
 // middleware will generate a 404, and send it to your
 // error-handling endware!
 
-router.use((req, res, next) => {
-  const err = new Error('API route not found!')
-  err.status = 404
-  next(err)
-})
+// router.use("/projects", require("./projects"));
+// router.use("/robots", require("./robots"));
 
-module.exports = router
+router.get("/robots", async (req, res, next) => {
+  try {
+    const robots = await Robot.findAll();
+    res.status(200).send(robots);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.get("/projects", async (req, res, next) => {
+  try {
+    const projects = await Project.findAll();
+
+    res.status(200).send(projects);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.use((req, res, next) => {
+  const err = new Error("API route not found!");
+  err.status = 404;
+  next(err);
+});
+
+module.exports = router;

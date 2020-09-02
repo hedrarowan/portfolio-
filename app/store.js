@@ -4,7 +4,6 @@ import appReducer from "./redux";
 import { createLogger } from "redux-logger"; // https://github.com/evgenyrodionov/redux-logger
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunkMiddleware from "redux-thunk"; // https://github.com/gaearon/redux-thunk
-import { SET_ROBOTS, setRobots, fetchRobotsThunk } from "./redux/robots";
 
 let middleware = [
   // `withExtraArgument` gives us access to axios in our async action creators!
