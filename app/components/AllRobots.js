@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import robotsReducer, { fetchRobots } from "../redux/robots";
 import SingleRobot from "./SingleRobot";
-
+import { NavLink } from "react-router-dom";
 // Notice that we're exporting the AllRobots component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
 // bottom) is connected to Redux. Our tests should cover _both_ cases.
@@ -27,13 +27,13 @@ export class AllRobots extends React.Component {
         <div>
           <ul>
             {this.props.robots.map((robot, index) => (
-              <li className="single-robot" key={this.props.robots[index].id}>
-                <SingleRobot
-                  robot={this.props.robots[index]}
-                  key={index}
-                  {...robot}
-                />
-              </li>
+              <div>
+                <li className="single-robot" key={robot.id}>
+                  <NavLink to={`/robots/${robot.id}`}>
+                    <h3>{robot.name}</h3>
+                  </NavLink>
+                </li>
+              </div>
             ))}
           </ul>
         </div>

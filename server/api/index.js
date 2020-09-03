@@ -45,9 +45,7 @@ router.get("/robots/:robotId", async (req, res, next) => {
   try {
     // console.log(req.body, "im rick");
     const robotId = await req.params.robotId;
-    const robot = await Robot.findAll({
-      where: { id: robotId },
-    });
+    const robot = await Robot.findByPk(robotId);
 
     res.send(robot);
   } catch (error) {
