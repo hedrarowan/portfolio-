@@ -19,6 +19,18 @@ export class SingleProject extends React.Component {
         <h3>deadline: {project.deadline}</h3>
         <h3>priority: {project.priority}</h3>
         <h3>description: {project.description}</h3>
+        <h3>robots: </h3>
+        {robots === "No Robots Currently" ? (
+          <h3>No Robots Currently Assigned</h3>
+        ) : (
+          <ul>
+            {robots.map((robot) => (
+              <div key={robot.id}>
+                <li>{robot.name}</li>
+              </div>
+            ))}
+          </ul>
+        )}
       </div>
     );
   }
