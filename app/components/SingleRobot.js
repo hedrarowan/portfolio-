@@ -11,67 +11,28 @@ class SingleRobot extends React.Component {
     const robotId = this.props.match.params.robotId;
     this.props.getRobot(robotId);
   }
-  // let robotId;
-  // const robot = props.robot;
 
-  // if (props.robot !== undefined) {
-  //   robotId = props.robot.id;
-  //   robot = props.robot;
-  //   console.log(props, "THESE PROPS");
-  // } else if (props.match !== undefined) {
-  //   robotId = props.match.params.robotId;
-  //   robot = {
-  //     name: "badger",
-  //     imageUrl: "www.happy.com",
-  //     fuelType: "gas",
-  //     fuelLevel: 10,
-  //   };
-  //   console.log(props.dispatch, "PROPS");
-  // } else {
-  //   return <div>The Robot Does Not Exist</div>;
-  // }
-
-  // console.log("IM ROBOT ID", robotId);
-
-  // componentDidMount() {
-  //   const robotId = props.match.params.robotId;
-  //   const fetchedRobot = props.getRobot(robotId);
-  //   console.log(fetchedRobot);
-  // }
-
-  // console.log(props.getProjects(robotId), "BONOININ");
-
-  // useEffect(() => {
-  //   props.getProjects(robotId);
-  //   console.log(getProjects);
-  // }
-
-  //   console.log(fetchedRobot);
-  // }
-  // let robot = props.robot;
-  // console.log(robot, props, "right here");
-  // async componentDidMount() {
-  //   // const fetched = await Robot.findByPk(this.props.match.params.robotId);
-  //   // this.props.fetchProjects(this.props.robot);
-  //   console.log(fetched, "fetched");
-  // }
-  // render() {
-  // // console.log(this.props, "my props");
-  // const robotId = this.props.match.params.robotId;
-  // const projects = this.state.projects;
-  // const robot = this.state.robot;
   render() {
-    console.log(this.props);
+    console.log(
+      this.props.robot,
+      "this props robot",
+      this.props.project,
+      "thisprojectprops"
+    );
+
     const robotId = this.props.match.params.robotId;
     const robot = this.props.robot;
+    const projects = this.props.projects;
+    console.log(projects, "projects");
     return (
       <div className="body">
+        <h3>{robot.name}</h3>
         <img src={robot.imageUrl} />
         <h3>Fuel Type: {robot.fuelType}</h3>
         <h3>Fuel Level: {robot.fuelLevel}</h3>
         <p>Projects</p>
-        {/* {projects.length < 0 || projects === undefined ? (
-          <h1>Sorry, No Projects at this Time</h1>
+        {projects === "No Projects Currently" ? (
+          <h3>Sorry, No Projects at this Time</h3>
         ) : (
           <ul>
             {projects.map((project) => (
@@ -80,7 +41,7 @@ class SingleRobot extends React.Component {
               </div>
             ))}
           </ul>
-        )} */}
+        )}
       </div>
     );
   }
@@ -89,7 +50,9 @@ class SingleRobot extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    robot: state.singleRobot,
+    robot: state.singleRobot.robot,
+    projects: state.singleRobot.projects,
+    // projects: state.projects,
   };
 };
 
