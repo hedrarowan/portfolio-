@@ -75,6 +75,37 @@ router.get("/robots/:robotId/projects", async (req, res, next) => {
   }
 });
 
+router.get("/projects/:projectId", async (req, res, next) => {
+  try {
+    const projectId = await req.params.projectId;
+    const project = await Project.findByPk(projectId);
+    res.send(project);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.get("/projects/:projectId/robots", async (req, res, next) => {
+  try {
+    const projectId = await req.params.projectId;
+    const project = await Project.findAll({
+      where: { id: projectId },
+    });
+
+    const robots = await Robot.findAll({
+      where: { projectId: projectId },
+    });
+
+    if (robots.length === 0) {
+      res.send("No Robots Currently");
+    } else {
+      res.send(robots);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 router.use((req, res, next) => {
   const err = new Error("API route not found!");
   err.status = 404;

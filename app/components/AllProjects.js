@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchProjects } from "../redux/projects";
+import { NavLink } from "react-router-dom";
 
 // Notice that we're exporting the AllProjects component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -27,6 +28,10 @@ export class AllProjects extends React.Component {
             return (
               <li key={project.id}>
                 <span>{project.title}</span>
+                <NavLink to={`/projects/${project.id}`}>
+                  <h3>{project.title}</h3>
+                </NavLink>
+                <span>Deadline: {project.deadline}</span>
               </li>
             );
           })}

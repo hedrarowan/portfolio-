@@ -32,6 +32,7 @@ export class AllRobots extends React.Component {
                   <NavLink to={`/robots/${robot.id}`}>
                     <h3>{robot.name}</h3>
                   </NavLink>
+                  <img src={robot.imageUrl}></img>
                 </li>
               </div>
             ))}

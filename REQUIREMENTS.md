@@ -35,6 +35,7 @@ The requirements below are broken into separate **tiers**, which model the way w
 - [ ] Robots may be associated with many projects. Likewise, projects may be associated with many robots.
 
 #### Seed
+
 - [ ] Running the seed file creates projects and robots for demonstration purposes
 
 Congrats! You have completed your first vertical slice! Make sure to `commit -m "Feature: Get all robots and projects"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!
@@ -48,10 +49,10 @@ Congrats! You have completed your first vertical slice! Make sure to `commit -m 
 #### Frontend
 
 - Write a component to display a single robot with the following information:
-  - [ ] The robot's name, image, fuelType, fuelLevel
+  - [ 1] The robot's name, image, fuelType, fuelLevel
   - [ ] The names of all their assigned projects (or a helpful message if they don't have any)
-- [ ] Display the appropriate robot when the url matches `/robots/:robotId`
-- [ ] Clicking on a robot from the all-robots view should navigate to show that robot in the single-robot view
+- [ 1] Display the appropriate robot when the url matches `/robots/:robotId`
+- [ 1] Clicking on a robot from the all-robots view should navigate to show that robot in the single-robot view
 
 - Write a component to display a single project with the following information:
   - [ ] The project's title, deadline, priority, description
@@ -80,6 +81,7 @@ Congrats! You have completed your second vertical slice! Make sure to `commit -m
 - [ ] Write a component to display a form for adding a new robot that contains _at least_ an input for name
 - [ ] Display this component as part of the all-robots view, alongside the list of robots
 - Submitting the form with valid data should:
+
   - [ ] Make an AJAX request that causes the new robot to be persisted in the database
   - [ ] Add the new robot to the list of robots without needing to refresh the page
 
@@ -106,6 +108,7 @@ Congrats! You have completed your third vertical slice! Make sure to `commit -m 
 
 - [ ] In the all-robots view, include an `X` button next to each robot
 - Clicking the `X` button should:
+
   - [ ] Make an AJAX request that causes that robot to be removed from database
   - [ ] Remove the robot from the list of robots without needing to refresh the page
 
@@ -148,7 +151,6 @@ Congrats! You have completed your fourth vertical slice! Make sure to `commit -m
 
 - [ ] Write a route to update an existing project
 - [ ] Write a route to update an existing robot
-
 
 Congrats! You have completed your fifth vertical slice! Make sure to `commit -m "Feature: Update Robot and Project"` before moving on (see RUBRIC.md - points are awarded/deducted for a proper git workflow)!
 
