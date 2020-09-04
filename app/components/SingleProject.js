@@ -4,37 +4,49 @@ import { fetchProject } from "../redux/singleProject";
 import { connect } from "react-redux";
 import UpdateProject from "./UpdateProject";
 import { NavLink } from "react-router-dom";
+import UnassignProject from "./UnassignProject";
 
 export class SingleProject extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       project: {},
+      robots: [],
     };
     this.updateProjects = this.updateProjects.bind(this);
+    this.unassignProject = this.unassignProject.bind(this);
   }
   async componentDidMount() {
     const projectId = await this.props.match.params.projectId;
     await this.props.getProject(projectId);
     await this.setState({
       project: this.props.project,
+      robots: this.props.robots,
     });
   }
 
   updateProjects(project) {
     this.setState({
       project: project,
+      robots: [],
     });
   }
 
+  unassignProject(project, robots) {
+    this.setState({
+      project: project,
+      robots: robots,
+    });
+  }
   render() {
     let project;
+    let robots;
 
-    const robots = this.props.robots;
     if (this.state.project === undefined) {
       project = this.props.project;
     } else {
       project = this.state.project;
+      robots = this.state.robots;
     }
     return (
       <div id="single-project" className="body">
@@ -44,12 +56,21 @@ export class SingleProject extends React.Component {
         <h3>description: {project.description}</h3>
         <h3>completed: {project.completed}</h3>
         <h3>robots: </h3>
-        {robots === "No Robots Currently" ? (
+        {robots === "No Robots Currently" ||
+        robots === null ||
+        robots === undefined ||
+        robots.length === 0 ? (
           <h3>No Robots Currently Assigned</h3>
         ) : (
           <ul>
             {robots.map((robot) => (
               <div key={robot.id}>
+                <UnassignProject
+                  project={project}
+                  robot={robot}
+                  robots={robots}
+                  update={this.unassignProject}
+                />
                 <li>{robot.name}</li>
               </div>
             ))}

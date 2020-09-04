@@ -22,7 +22,7 @@ export default class UpdateProject extends React.Component {
     try {
       event.preventDefault();
       const res = await axios.put(
-        `/api/projects/${this.props.project.id}`,
+        `../api/projects/${this.props.project.id}`,
         this.state
       );
       await this.props.update(this.state);
@@ -35,7 +35,7 @@ export default class UpdateProject extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <lable htmlFor="title">New Title</lable>
+          <label htmlFor="title">New Title</label>
           <input type="text" name="title" onChange={this.handleChange} />
           <label htmlFor="completed">Completed</label>
           <input type="text" name="completed" onChange={this.handleChange} />

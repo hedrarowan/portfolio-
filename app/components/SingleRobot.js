@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { fetchRobot } from "../redux/singleRobot";
 import { connect } from "react-redux";
 import UpdateRobot from "./UpdateRobot";
+import UnassignRobot from "./UnassignRobot";
 import axios from "axios";
 // import robot from "../../server/db/robot";
 
@@ -12,8 +13,10 @@ class SingleRobot extends React.Component {
     super(props);
     this.state = {
       robot: {},
+      projects: [],
     };
     this.updateRobots = this.updateRobots.bind(this);
+    this.unassignRobot = this.unassignRobot.bind(this);
   }
   async componentDidMount() {
     const robotId = await this.props.match.params.robotId;
@@ -21,22 +24,32 @@ class SingleRobot extends React.Component {
 
     await this.setState({
       robot: this.props.robot,
+      projects: this.props.projects,
     });
   }
 
   updateRobots(robot) {
     this.setState({
       robot: robot,
+      projects: [],
+    });
+  }
+
+  unassignRobot(robot, projects) {
+    this.setState({
+      robot: robot,
+      projects: projects,
     });
   }
 
   render() {
     let robot;
-    const projects = this.props.projects;
+    let projects;
     if (this.state.robot === undefined) {
       robot = this.props.robot;
     } else {
       robot = this.state.robot;
+      projects = this.state.projects;
     }
     return (
       <div className="body">
@@ -45,13 +58,21 @@ class SingleRobot extends React.Component {
         <h3>Fuel Type: {robot.fuelType}</h3>
         <h3>Fuel Level: {robot.fuelLevel}</h3>
         <p>Projects</p>
-        {projects === "No Projects Currently" ? (
+        {projects === "No Projects Currently" ||
+        projects === null ||
+        projects === undefined ||
+        projects.length === 0 ? (
           <h3>Sorry, No Projects at this Time</h3>
         ) : (
           <ul>
             {projects.map((project) => (
               <div key={project.id}>
-                <button type="submit">Unassign</button>
+                <UnassignRobot
+                  robot={robot}
+                  project={project}
+                  projects={projects}
+                  update={this.unassignRobot}
+                />
                 <li>{project.title}</li>
               </div>
             ))}
