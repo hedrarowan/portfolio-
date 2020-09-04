@@ -3,27 +3,41 @@ import { NavLink } from "react-router-dom";
 // import { Robot, Project } from "../../server/db";
 import { fetchRobot } from "../redux/singleRobot";
 import { connect } from "react-redux";
+import UpdateRobot from "./UpdateRobot";
 import axios from "axios";
 // import robot from "../../server/db/robot";
 
 class SingleRobot extends React.Component {
-  componentDidMount() {
-    const robotId = this.props.match.params.robotId;
-    this.props.getRobot(robotId);
+  constructor(props) {
+    super(props);
+    this.state = {
+      robot: {},
+    };
+    this.updateRobots = this.updateRobots.bind(this);
+  }
+  async componentDidMount() {
+    const robotId = await this.props.match.params.robotId;
+    await this.props.getRobot(robotId);
+
+    await this.setState({
+      robot: this.props.robot,
+    });
+  }
+
+  updateRobots(robot) {
+    this.setState({
+      robot: robot,
+    });
   }
 
   render() {
-    console.log(
-      this.props.robot,
-      "this props robot",
-      this.props.project,
-      "thisprojectprops"
-    );
-
-    const robotId = this.props.match.params.robotId;
-    const robot = this.props.robot;
+    let robot;
     const projects = this.props.projects;
-    console.log(projects, "projects");
+    if (this.state.robot === undefined) {
+      robot = this.props.robot;
+    } else {
+      robot = this.state.robot;
+    }
     return (
       <div className="body">
         <h3>{robot.name}</h3>
@@ -37,11 +51,14 @@ class SingleRobot extends React.Component {
           <ul>
             {projects.map((project) => (
               <div key={project.id}>
+                <button type="submit">Unassign</button>
                 <li>{project.title}</li>
               </div>
             ))}
           </ul>
         )}
+        <UpdateRobot robot={robot} update={this.updateRobots} />
+        <NavLink to="/robots">Back</NavLink>
       </div>
     );
   }
