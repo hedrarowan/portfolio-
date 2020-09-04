@@ -31,18 +31,6 @@ export function fetchRobot(robotId) {
     }
   };
 }
-// export function fetchProjects(robotId) {
-//   return async (dispatch) => {
-//     try {
-//       const res = await axios.get(`/api/robots/${robotId}/projects`);
-//       const projects = await res.data;
-//       console.log(res.data, "RESDATA");
-//       await dispatch(setProjects(projects));
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-// }
 
 const initialState = {
   robot: {},
@@ -60,12 +48,7 @@ export default function singleRobotReducer(state = initialState, action) {
         robot: robot,
         projects: projects,
       };
-    // case SET_PROJECTS_ON_ROBOT:
-    //   const projects = action.projects;
-    //   return {
-    //     ...robot,
-    //     projects: projects,
-    //   };
+
     default:
       return state;
   }

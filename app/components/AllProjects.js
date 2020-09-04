@@ -27,7 +27,6 @@ export class AllProjects extends React.Component {
           {this.props.projects.map((project) => {
             return (
               <li key={project.id}>
-                <span>{project.title}</span>
                 <NavLink to={`/projects/${project.id}`}>
                   <h3>{project.title}</h3>
                 </NavLink>

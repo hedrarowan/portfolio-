@@ -106,6 +106,10 @@ router.get("/projects/:projectId/robots", async (req, res, next) => {
   }
 });
 
+router.post("/robots", (req, res, next) => {
+  const newRobot = Robot.create(req.body);
+  res.send(newRobot);
+});
 router.use((req, res, next) => {
   const err = new Error("API route not found!");
   err.status = 404;

@@ -5,12 +5,10 @@ import { connect } from "react-redux";
 export class SingleProject extends React.Component {
   componentDidMount() {
     const projectId = this.props.match.params.projectId;
-    // const res =axios.get(`/api/projects/${projectId}`);
     this.props.getProject(projectId);
   }
 
   render() {
-    const projectId = this.props.match.projectId;
     const project = this.props.project;
     const robots = this.props.robots;
     return (

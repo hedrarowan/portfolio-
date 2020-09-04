@@ -26,14 +26,6 @@ const RESET_STORE = "RESET_STORE";
 const GOT_PROJECTS_FROM_SERVER = "GOT_PROJECTS_FROM_SERVER";
 export const resetStore = () => ({ type: RESET_STORE });
 
-// export const gotProjectsFromServer = (arr) => {
-//   return {
-//     type: GOT_PROJECTS_FROM_SERVER,
-//     projects: arr,
-//   };
-// };
-
-// export const fet
 const rootReducer = (state, action) => {
   if (action.type === RESET_STORE) {
     state = undefined;
