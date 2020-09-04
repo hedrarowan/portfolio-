@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import robotsReducer, { fetchRobots } from "../redux/robots";
-import SingleRobot from "./SingleRobot";
+import { fetchRobots } from "../redux/robots";
+
 import { NavLink } from "react-router-dom";
 import CreateRobot from "./CreateRobot";
 // Notice that we're exporting the AllRobots component twice. The named export
@@ -18,9 +18,9 @@ export class AllRobots extends React.Component {
 
   async componentDidMount() {
     await this.props.getRobots();
-    console.log(this.props.robots);
+
     const robots = this.props.robots;
-    await console.log("ROBOTS", robots);
+
     this.setState({
       robots: robots,
     });

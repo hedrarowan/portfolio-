@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchProjects } from "../redux/projects";
 import { NavLink } from "react-router-dom";
+import CreateProject from "./CreateProject";
 
 // Notice that we're exporting the AllProjects component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -12,29 +13,55 @@ export class AllProjects extends React.Component {
     this.state = {
       projects: [],
     };
+    this.addProject = this.addProject.bind(this);
   }
 
   async componentDidMount() {
     await this.props.getProjects();
+    const projects = this.props.projects;
+    this.setState({
+      projects: projects,
+    });
+  }
+
+  addProject(project) {
+    this.setState({
+      projects: [...this.props.projects, project],
+    });
+
+    console.log("IAMSID", this.state.projects);
   }
 
   render() {
-    if (this.props.projects.length === 0 || this.props.projects === undefined) {
+    if (
+      this.props.projects.length === 0 ||
+      this.props.projects === undefined ||
+      this.state.projects === undefined ||
+      this.state.projects === 0
+    ) {
       return <h1>"No Projects"</h1>;
     } else {
+      console.log(this.state);
+      const projects = this.state.projects.slice();
       return (
-        <ul>
-          {this.props.projects.map((project) => {
-            return (
-              <li key={project.id}>
-                <NavLink to={`/projects/${project.id}`}>
-                  <h3>{project.title}</h3>
-                </NavLink>
-                <span>Deadline: {project.deadline}</span>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="projects">
+          <ul>
+            {projects.map((project) => {
+              return (
+                <li key={project.id}>
+                  <NavLink to={`/projects/${project.id}`}>
+                    <h3>{project.title}</h3>
+                  </NavLink>
+                  <span>Deadline: {project.deadline}</span>
+                </li>
+              );
+            })}
+          </ul>
+          <CreateProject
+            projects={this.props.projects}
+            addProject={this.addProject}
+          />
+        </div>
       );
     }
   }

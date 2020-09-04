@@ -34,7 +34,6 @@ router.get("/robots", async (req, res, next) => {
 router.get("/projects", async (req, res, next) => {
   try {
     const projects = await Project.findAll();
-
     res.status(200).send(projects);
   } catch (error) {
     console.log(error);
@@ -110,10 +109,14 @@ router.post("/robots", (req, res, next) => {
   const newRobot = Robot.create(req.body);
   res.send(newRobot);
 });
+
+router.post("/projects", (req, res, next) => {
+  const newProject = Project.create(req.body);
+  res.send(newProject);
+});
 router.use((req, res, next) => {
   const err = new Error("API route not found!");
   err.status = 404;
   next(err);
 });
-
 module.exports = router;
