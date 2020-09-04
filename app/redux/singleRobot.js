@@ -32,6 +32,16 @@ export function fetchRobot(robotId) {
   };
 }
 
+export function deleteRobot(robotId) {
+  return async (dispatch) => {
+    try {
+      const res = await axios.delete(`/api/robots/${robotId}`, robotId);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
 const initialState = {
   robot: {},
   projects: [],

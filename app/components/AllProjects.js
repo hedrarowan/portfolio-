@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetchProjects } from "../redux/projects";
 import { NavLink } from "react-router-dom";
 import CreateProject from "./CreateProject";
+import DeleteProject from "./DeleteProject";
 
 // Notice that we're exporting the AllProjects component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -14,6 +15,7 @@ export class AllProjects extends React.Component {
       projects: [],
     };
     this.addProject = this.addProject.bind(this);
+    this.deleteProject = this.deleteProject.bind(this);
   }
 
   async componentDidMount() {
@@ -30,6 +32,20 @@ export class AllProjects extends React.Component {
     });
 
     console.log("IAMSID", this.state.projects);
+  }
+
+  async deleteProject(project) {
+    const copyProjects = this.state.projects.slice();
+    copyProjects.map((project, index) => {
+      if (project === copyProjects[index]) {
+        return copyProjects.splice(index, 1);
+      } else {
+        return project;
+      }
+    });
+    this.setState({
+      projects: [...copyProjects],
+    });
   }
 
   render() {
@@ -49,6 +65,10 @@ export class AllProjects extends React.Component {
             {projects.map((project) => {
               return (
                 <li key={project.id}>
+                  <DeleteProject
+                    project={project}
+                    delete={this.deleteProject}
+                  />
                   <NavLink to={`/projects/${project.id}`}>
                     <h3>{project.title}</h3>
                   </NavLink>

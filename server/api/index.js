@@ -114,6 +114,24 @@ router.post("/projects", (req, res, next) => {
   const newProject = Project.create(req.body);
   res.send(newProject);
 });
+
+router.delete("/robots/:robotId", (req, res, next) => {
+  Robot.destroy({
+    where: {
+      id: req.params.robotId,
+    },
+  });
+  res.status(204).end();
+});
+
+router.delete("/projects/:projectId", (req, res, next) => {
+  Project.destroy({
+    where: {
+      id: req.params.projectId,
+    },
+  });
+  res.status(204).end();
+});
 router.use((req, res, next) => {
   const err = new Error("API route not found!");
   err.status = 404;

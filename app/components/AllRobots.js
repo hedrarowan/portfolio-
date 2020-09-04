@@ -4,6 +4,7 @@ import { fetchRobots } from "../redux/robots";
 
 import { NavLink } from "react-router-dom";
 import CreateRobot from "./CreateRobot";
+import DeleteRobot from "./DeleteRobot";
 // Notice that we're exporting the AllRobots component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
 // bottom) is connected to Redux. Our tests should cover _both_ cases.
@@ -14,6 +15,7 @@ export class AllRobots extends React.Component {
       robots: [],
     };
     this.addRobot = this.addRobot.bind(this);
+    this.deleteRobot = this.deleteRobot.bind(this);
   }
 
   async componentDidMount() {
@@ -35,6 +37,20 @@ export class AllRobots extends React.Component {
     console.log("IMIMI", this.state.robots);
   }
 
+  async deleteRobot(robot) {
+    const copyRobots = this.state.robots.slice();
+    copyRobots.map((robot, index) => {
+      if (robot === copyRobots[index]) {
+        return copyRobots.splice(index, 1);
+      } else {
+        return robot;
+      }
+    });
+    this.setState({
+      robots: [...copyRobots],
+    });
+  }
+
   render() {
     if (
       this.props.robots.length === 0 ||
@@ -51,6 +67,7 @@ export class AllRobots extends React.Component {
             {robots.map((robot, index) => (
               <div>
                 <li className="single-robot" key={robot.id}>
+                  <DeleteRobot robot={robot} delete={this.deleteRobot} />
                   <NavLink to={`/robots/${robot.id}`}>
                     <h3>{robot.name}</h3>
                   </NavLink>
