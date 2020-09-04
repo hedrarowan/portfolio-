@@ -18,25 +18,37 @@ export class AllRobots extends React.Component {
 
   async componentDidMount() {
     await this.props.getRobots();
-    console.log("PROPS FRM ALLROBOTS", this.props);
+    console.log(this.props.robots);
+    const robots = this.props.robots;
+    await console.log("ROBOTS", robots);
+    this.setState({
+      robots: robots,
+    });
   }
 
-  addRobot(robot) {
-    console.log("IM ADDING A ROBOT");
+  async addRobot(robot) {
+    console.log(this.props.robots, "props");
     this.setState({
       robots: [...this.props.robots, robot],
     });
-    console.log("IMIMI", this.props, robot);
+
+    console.log("IMIMI", this.state.robots);
   }
 
   render() {
-    if (this.props.robots.length === 0 || this.props.robots === undefined) {
+    if (
+      this.props.robots.length === 0 ||
+      this.props.robots === undefined ||
+      this.state.robots === undefined ||
+      this.state.robots === 0
+    ) {
       return <h1>"No Robots"</h1>;
     } else {
+      const robots = this.state.robots.slice();
       return (
         <div className="robots">
           <ul>
-            {this.props.robots.map((robot, index) => (
+            {robots.map((robot, index) => (
               <div>
                 <li className="single-robot" key={robot.id}>
                   <NavLink to={`/robots/${robot.id}`}>
@@ -47,7 +59,7 @@ export class AllRobots extends React.Component {
               </div>
             ))}
           </ul>
-          <CreateRobot addRobot={this.addRobot} />
+          <CreateRobot robots={this.props.robots} addRobot={this.addRobot} />
         </div>
       );
     }
