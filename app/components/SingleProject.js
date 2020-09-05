@@ -28,7 +28,6 @@ export class SingleProject extends React.Component {
   updateProjects(project) {
     this.setState({
       project: project,
-      robots: [],
     });
   }
 
@@ -38,6 +37,7 @@ export class SingleProject extends React.Component {
       robots: robots,
     });
   }
+
   render() {
     let project;
     let robots;

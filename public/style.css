@@ -49,7 +49,7 @@ main {
 }
 
 #single-project {
+  color: "white";
   padding: 15px;
   border-style: groove;
-  color: "blue";
 }
