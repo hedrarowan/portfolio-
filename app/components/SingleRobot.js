@@ -57,12 +57,12 @@ class SingleRobot extends React.Component {
         <img src={robot.imageUrl} />
         <h3>Fuel Type: {robot.fuelType}</h3>
         <h3>Fuel Level: {robot.fuelLevel}</h3>
-        <p>Projects</p>
+        <h3>Projects:</h3>
         {projects === "No Projects Currently" ||
         projects === null ||
         projects === undefined ||
         projects.length === 0 ? (
-          <h3>Sorry, No Projects at this Time</h3>
+          <h4>No Projects Currently</h4>
         ) : (
           <ul>
             {projects.map((project) => (

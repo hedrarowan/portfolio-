@@ -57,14 +57,16 @@ export class SingleProject extends React.Component {
         <h3>priority: {project.priority}</h3>
         <h3>description: {project.description}</h3>
         <h3>completed: {project.completed}</h3>
-        <h3>robots: </h3>
+        <h3>
+          <i>robots: </i>
+        </h3>
         {robots === "No Robots Currently" ||
         robots === null ||
         robots === undefined ||
         robots.length === 0 ? (
-          <h3>No Robots Currently Assigned</h3>
+          <h4 className="no-robots">No Robots Currently Assigned</h4>
         ) : (
-          <ul>
+          <ul className="project-robots">
             {robots.map((robot) => (
               <div key={robot.id}>
                 <UnassignProject

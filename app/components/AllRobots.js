@@ -27,16 +27,20 @@ export class AllRobots extends React.Component {
   }
 
   async addRobot(robot) {
+    const copyOfState = this.state.robots.slice();
     this.setState({
-      robots: [...this.props.robots, robot],
+      robots: [...copyOfState, robot],
     });
   }
 
   async deleteRobot(robot) {
+    const currentRobot = robot;
     const copyRobots = this.state.robots.slice();
     copyRobots.map((robot, index) => {
-      if (robot === copyRobots[index]) {
+      if (copyRobots[index] === currentRobot) {
         return copyRobots.splice(index, 1);
+      } else {
+        return robot;
       }
     });
     this.setState({
@@ -60,11 +64,20 @@ export class AllRobots extends React.Component {
             {robots.map((robot, index) => (
               <div>
                 <li className="single-robot" key={robot.id}>
-                  <DeleteRobot robot={robot} delete={this.deleteRobot} />
+                  <DeleteRobot
+                    className="single-robot-delete"
+                    robot={robot}
+                    delete={this.deleteRobot}
+                  />
                   <NavLink to={`/robots/${robot.id}`}>
-                    <h3>{robot.name}</h3>
+                    <h3 className="single-robot-name">{robot.name}</h3>
                   </NavLink>
-                  <img src={robot.imageUrl}></img>
+                  <img
+                    className="robot-image"
+                    src={robot.imageUrl}
+                    width="150"
+                    height="150"
+                  ></img>
                 </li>
               </div>
             ))}

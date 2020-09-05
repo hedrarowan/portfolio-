@@ -19,10 +19,8 @@ export default class CreateRobot extends React.Component {
   async handleSubmit(event) {
     try {
       event.preventDefault();
-
       await axios.post("/api/robots", this.state);
-
-      await this.props.addRobot(this.state);
+      this.props.addRobot(this.state);
     } catch (error) {
       console.log(error);
     }

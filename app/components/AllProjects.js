@@ -30,9 +30,10 @@ export class AllProjects extends React.Component {
   }
 
   async deleteProject(project) {
+    const currentProject = project;
     const copyProjects = this.state.projects.slice();
     copyProjects.map((project, index) => {
-      if (project === copyProjects[index]) {
+      if (copyProjects[index] === currentProject) {
         return copyProjects.splice(index, 1);
       } else {
         return project;

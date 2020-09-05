@@ -11,7 +11,7 @@
 
 body {
   background: linear-gradient(#7fffd4, #ff00ff);
-  height: 200vh;
+  height: 500vh;
   padding: 0;
   margin: 0;
   width: 100vw;
@@ -44,12 +44,55 @@ main {
 }
 
 .robots {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  margin: 5px;
+  border-style: groove;
+}
+
+.single-project {
+  color: "white";
   padding: 15px;
   border-style: groove;
 }
 
-#single-project {
-  color: "white";
-  padding: 15px;
+.single-robot {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* align-items: space-evenly; */
   border-style: groove;
+  margin: 5px;
+}
+
+.single-robot-name {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+  padding: 20px;
+}
+
+.single-robot-delete {
+  display: flex;
+  align-items: flex-start;
+}
+.robot-image {
+  display: flex;
+  flex-direction: row;
+  align-self: right;
+}
+
+.project-robots {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border: groove;
+}
+
+.no-robots {
+  border: groove;
 }
