@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
+import { connect } from "react-redux";
 
-export default class UpdateRobot extends React.Component {
+export class UpdateRobot extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,12 +22,14 @@ export default class UpdateRobot extends React.Component {
   async handleSubmit(event) {
     try {
       event.preventDefault();
+      this.props.robot.name = this.state.name;
+      this.props.robot.fuelLevel = this.state.fuelLevel;
       const res = await axios.put(
         `/api/robots/${this.props.robot.id}`,
-        this.state
+        this.props.robot
       );
 
-      await this.props.update(this.state);
+      await this.props.update(this.props.robot);
     } catch (error) {
       console.log(error);
     }
@@ -46,3 +49,11 @@ export default class UpdateRobot extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    robot: state.singleRobot.robot,
+  };
+};
+
+export default connect(mapStateToProps, null)(UpdateRobot);

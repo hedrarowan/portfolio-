@@ -29,23 +29,26 @@ const seed = async () => {
     const atticus = await Robot.create({
       id: 1,
       name: "Gody",
-      imageUrl: "/images/r2d2.png",
+      imageUrl:
+        "https://www.telegraph.co.uk/content/dam/films/2016/11/14/blade_runner_2963493k_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.jpg?imwidth=450",
       fuelType: "electric",
       fuelLevel: 40,
     });
 
     const Katticus = await Robot.create({
       id: 2,
-      name: "Katticus",
-      imageUrl: "cody.jpg",
+      name: "Bimpson",
+      imageUrl:
+        "https://cdn.digg.com/wp-content/uploads/2020/07/01014219/942218454-Screen-Shot-2020-06-30-at-9.42.03-PM.jpg",
       fuelType: "electric",
       fuelLevel: 55,
     });
 
     const Tatticus = await Robot.create({
       id: 3,
-      name: "Patticus",
-      imageUrl: "cody.jpg",
+      name: "Donna Haraway ",
+      imageUrl:
+        "https://www.berlinerfestspiele.de/media/2017/maerzmusik_2017/mm17_bilder/mm17_bilder_duplex/mm17_haraway_d_582w.jpg",
       fuelType: "electric",
       fuelLevel: 75,
     });
