@@ -11,15 +11,36 @@ const Routes = () => {
       <div>
         <nav>Welcome!</nav>
         <main>
-          <h1>
-            Welcome to StackBot Project Management: your robot employees are
-            awaiting assignments!
-          </h1>
-          <p>This seems like a nice place to get started with some Routes!</p>
+          <h1>Welcome to StackBot Project Management:</h1>
+
           <nav>
-            <NavLink to="/"> Home </NavLink>
-            <NavLink to="/robots"> Robots </NavLink>
-            <NavLink to="/projects"> Projects </NavLink>
+            <NavLink
+              to="/"
+              activeStyle={{
+                fontWeight: "bold",
+                color: "white",
+              }}
+            >
+              ...Home...
+            </NavLink>
+            <NavLink
+              to="/robots"
+              activeStyle={{
+                fontWeight: "bold",
+                color: "pink",
+              }}
+            >
+              ...Robots...
+            </NavLink>
+            <NavLink
+              to="/projects"
+              activeStyle={{
+                fontWeight: "bold",
+                color: "pink",
+              }}
+            >
+              ...Projects...
+            </NavLink>
           </nav>
           <Route exact path="/robots" component={AllRobots} />
           <Route exact path="/projects" component={AllProjects} />

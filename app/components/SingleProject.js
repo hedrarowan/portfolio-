@@ -50,8 +50,10 @@ export class SingleProject extends React.Component {
     }
     return (
       <div id="single-project" className="body">
-        <h3>{project.title}</h3>
-        <h3>deadline: {project.deadline}</h3>
+        <h3>
+          <i>{project.title}</i>
+        </h3>
+        <h3>Deadline: {project.deadline}</h3>
         <h3>priority: {project.priority}</h3>
         <h3>description: {project.description}</h3>
         <h3>completed: {project.completed}</h3>
