@@ -12,14 +12,7 @@ export class UpdateProject extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  // componentDidMount() {
-  //   console.log(this.props);
-  //   console.log(this.state);
-  //   this.setState({
-  //     project: this.props.project,
-  //   });
-  //   console.log("immediate state", this.state);
-  // }
+
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
@@ -40,7 +33,6 @@ export class UpdateProject extends React.Component {
         this.props.project
       );
       await this.props.update(this.props.project);
-      console.log(this.state);
     } catch (error) {
       console.log(error);
     }

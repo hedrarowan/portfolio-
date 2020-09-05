@@ -1,26 +1,6 @@
 const router = require("express").Router();
 const { Robot, Project } = require("../db");
 
-// Your routes go here!
-// NOTE: Any routes that you put here are ALREADY mounted on `/api`
-// You can put all routes in this file HOWEVER,
-// this file should almost be like a table of contents for the routers you create!
-// For example:
-//
-// For your `/api/puppies` routes:
-// router.use('/puppies', require('./puppies'))
-//
-// And for your `/api/kittens` routes:
-// router.use('/kittens', require('./kittens'))
-
-// If someone makes a request that starts with `/api`,
-// but you DON'T have a corresponding router, this piece of
-// middleware will generate a 404, and send it to your
-// error-handling endware!
-
-// router.use("/projects", require("./projects"));
-// router.use("/robots", require("./robots"));
-
 router.get("/robots", async (req, res, next) => {
   try {
     const robots = await Robot.findAll();
@@ -41,7 +21,6 @@ router.get("/projects", async (req, res, next) => {
 
 router.get("/robots/:robotId", async (req, res, next) => {
   try {
-    // console.log(req.body, "im rick");
     const robotId = await req.params.robotId;
     const robot = await Robot.findByPk(robotId);
 
@@ -136,15 +115,6 @@ router.put("/projects/:projectId", async (req, res, next) => {
   }
 });
 
-router.put("/projects/:projectId/robots", async (req, res, next) => {
-  try {
-    const robots = req.params.robots;
-    await robots.update(req.body);
-    res.status(200).end();
-  } catch (error) {
-    console.log(error);
-  }
-});
 router.delete("/robots/:robotId", (req, res, next) => {
   Robot.destroy({
     where: {

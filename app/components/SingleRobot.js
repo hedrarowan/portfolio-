@@ -90,7 +90,6 @@ const mapStateToProps = (state) => {
   return {
     robot: state.singleRobot.robot,
     projects: state.singleRobot.projects,
-    // projects: state.projects,
   };
 };
 

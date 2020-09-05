@@ -5,9 +5,7 @@ import { fetchRobots } from "../redux/robots";
 import { NavLink } from "react-router-dom";
 import CreateRobot from "./CreateRobot";
 import DeleteRobot from "./DeleteRobot";
-// Notice that we're exporting the AllRobots component twice. The named export
-// (below) is not connected to Redux, while the default export (at the very
-// bottom) is connected to Redux. Our tests should cover _both_ cases.
+
 export class AllRobots extends React.Component {
   constructor(props) {
     super(props);
@@ -29,12 +27,9 @@ export class AllRobots extends React.Component {
   }
 
   async addRobot(robot) {
-    console.log(this.props.robots, "props");
     this.setState({
       robots: [...this.props.robots, robot],
     });
-
-    console.log("IMIMI", this.state.robots);
   }
 
   async deleteRobot(robot) {
@@ -42,8 +37,6 @@ export class AllRobots extends React.Component {
     copyRobots.map((robot, index) => {
       if (robot === copyRobots[index]) {
         return copyRobots.splice(index, 1);
-      } else {
-        return robot;
       }
     });
     this.setState({

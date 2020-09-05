@@ -16,12 +16,6 @@ if (process.browser) {
   middleware = [...middleware, createLogger({ collapsed: true })];
 }
 
-/** We wrap the entire redux store in a root reducer with a special
- * action, RESET_STORE. It calls our application's reducer with
- * state = undefined. This will trigger each of our sub-reducers
- * to reset back to their initial state. This will come in
- * handy when we need to reset our redux store in between tests.
- */
 const RESET_STORE = "RESET_STORE";
 const GOT_PROJECTS_FROM_SERVER = "GOT_PROJECTS_FROM_SERVER";
 export const resetStore = () => ({ type: RESET_STORE });

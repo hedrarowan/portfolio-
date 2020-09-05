@@ -5,9 +5,6 @@ import { NavLink } from "react-router-dom";
 import CreateProject from "./CreateProject";
 import DeleteProject from "./DeleteProject";
 
-// Notice that we're exporting the AllProjects component twice. The named export
-// (below) is not connected to Redux, while the default export (at the very
-// bottom) is connected to Redux. Our tests should cover _both_ cases.
 export class AllProjects extends React.Component {
   constructor(props) {
     super(props);
@@ -30,8 +27,6 @@ export class AllProjects extends React.Component {
     this.setState({
       projects: [...this.props.projects, project],
     });
-
-    console.log("IAMSID", this.state.projects);
   }
 
   async deleteProject(project) {
@@ -57,7 +52,6 @@ export class AllProjects extends React.Component {
     ) {
       return <h1>"No Projects"</h1>;
     } else {
-      console.log(this.state);
       const projects = this.state.projects.slice();
       return (
         <div className="projects">

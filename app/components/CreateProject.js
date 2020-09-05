@@ -22,7 +22,6 @@ export default class CreateProject extends React.Component {
     try {
       event.preventDefault();
       await axios.post("/api/projects", this.state);
-      console.log(this.state);
       await this.props.addProject(this.state);
     } catch (error) {
       console.log(error);
