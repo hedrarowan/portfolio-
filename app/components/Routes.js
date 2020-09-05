@@ -12,7 +12,7 @@ const Routes = () => {
         <nav>Welcome!</nav>
         <main>
           <h1>Welcome to StackBot Project Management:</h1>
-
+          <img src="unnamed.jpg"></img>
           <nav>
             <NavLink
               to="/"

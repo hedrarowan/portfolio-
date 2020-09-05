@@ -135,6 +135,16 @@ router.put("/projects/:projectId", async (req, res, next) => {
     next(error);
   }
 });
+
+router.put("/projects/:projectId/robots", async (req, res, next) => {
+  try {
+    const robots = req.params.robots;
+    await robots.update(req.body);
+    res.status(200).end();
+  } catch (error) {
+    console.log(error);
+  }
+});
 router.delete("/robots/:robotId", (req, res, next) => {
   Robot.destroy({
     where: {
@@ -151,28 +161,6 @@ router.delete("/projects/:projectId", (req, res, next) => {
     },
   });
   res.status(204).end();
-});
-
-router.get("/robots/:robotId/projects", async (req, res, next) => {
-  try {
-    const robotId = await req.params.robotId;
-    const robot = await Robot.findAll({
-      where: { id: robotId },
-    });
-    const projectId = robot[0].projectId;
-
-    if (projectId === null) {
-      res.send("No Projects Currently");
-    } else {
-      const projects = await Project.findAll({
-        where: { id: projectId },
-      });
-
-      res.send(projects);
-    }
-  } catch (error) {
-    console.log(error);
-  }
 });
 
 router.use((req, res, next) => {

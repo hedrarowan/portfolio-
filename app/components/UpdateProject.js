@@ -28,10 +28,11 @@ export class UpdateProject extends React.Component {
 
   async handleSubmit(event) {
     try {
-      console.log(this.state, "state");
-      console.log(this.props.project, "props");
       event.preventDefault();
-      this.props.project.title = this.state.title;
+      if (this.state.title !== "") {
+        this.props.project.title = this.state.title;
+      }
+
       this.props.project.completed = this.state.completed;
 
       const res = await axios.put(
