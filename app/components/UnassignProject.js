@@ -26,10 +26,7 @@ export class UnassignProject extends React.Component {
         robots: newRobots,
       });
 
-      const res = await axios.put(
-        `../api/projects/${this.state.project.id}`,
-        this.state
-      );
+      await axios.put(`../api/projects/${this.state.project.id}`, this.state);
 
       this.props.update(this.state.project, this.state.robots);
     } catch (error) {

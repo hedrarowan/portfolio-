@@ -33,13 +33,13 @@ export default class UnassignRobot extends React.Component {
         projects: newProjects,
       });
 
-      const res = await axios.put(
-        `../api/robots/${this.props.robot.id}`,
-        this.state
-      );
-      const res2 = await axios.get(`../api/robots/${this.props.robot.id}`);
+      await axios.put(`../api/robots/${this.props.robot.id}`, this.state.robot);
 
-      this.props.update(res2.data, newProjects);
+      // const res2 = await axios.get(
+      //   `../api/robots/${this.props.robot.id}/projects`
+      // );
+
+      this.props.update(newProjects);
     } catch (error) {
       console.log(error);
     }
