@@ -39,9 +39,6 @@ export default class UnassignRobot extends React.Component {
       const res = await axios.get(
         `../api/robots/${this.props.robot.id}/projects`
       );
-      // const res2 = await axios.get(
-      //   `../api/robots/${this.props.robot.id}/projects`
-      // );
 
       this.props.update(res.data);
     } catch (error) {

@@ -9,9 +9,9 @@ const Routes = () => {
   return (
     <Router>
       <div>
-        <nav>Welcome!</nav>
+        <nav></nav>
         <main>
-          <h1>Welcome to StackBot Project Management:</h1>
+          <h1>StackBot Project Management</h1>
           <img src="unnamed.jpg"></img>
           <nav>
             <NavLink

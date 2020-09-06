@@ -29,7 +29,6 @@ export class UnassignProject extends React.Component {
         project: this.props.project,
       });
 
-      console.log(this.state);
       await axios.put(`../api/robots/${this.props.robot.id}`, this.props.robot);
       const res = await axios.get(
         `../api/projects/${this.props.project.id}/robots`
