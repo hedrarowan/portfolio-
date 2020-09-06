@@ -24,8 +24,9 @@ export class AllProjects extends React.Component {
   }
 
   addProject(project) {
+    const copyOfState = this.state.projects.slice();
     this.setState({
-      projects: [...this.props.projects, project],
+      projects: [...copyOfState, project],
     });
   }
 

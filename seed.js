@@ -10,6 +10,7 @@ const seed = async () => {
       title: "Vroom about the place ",
       priority: 8,
       deadline: "2011-11-05",
+      completed: false,
     });
 
     const project2 = await Project.create({
@@ -17,6 +18,7 @@ const seed = async () => {
       title: "Nice long sit ",
       priority: 9,
       deadline: "2020-9-01",
+      completed: false,
     });
 
     const project3 = await Project.create({
@@ -24,6 +26,7 @@ const seed = async () => {
       title: "Chemical Bath",
       priority: 3,
       deadline: "3051-7-01",
+      completed: false,
     });
 
     const atticus = await Robot.create({
@@ -55,6 +58,7 @@ const seed = async () => {
 
     await Tatticus.addProjects([project1, project2]);
     await project2.addRobots([Katticus, atticus]);
+    await project3.addRobots([Tatticus]);
   } catch (err) {
     console.log(red(err));
   }

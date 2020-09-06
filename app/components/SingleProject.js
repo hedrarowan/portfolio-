@@ -28,12 +28,12 @@ export class SingleProject extends React.Component {
   updateProjects(project) {
     this.setState({
       project: project,
+      robots: [],
     });
   }
 
-  unassignProject(project, robots) {
+  unassignProject(robots) {
     this.setState({
-      project: project,
       robots: robots,
     });
   }

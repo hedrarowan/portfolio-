@@ -26,6 +26,7 @@ export default class UnassignRobot extends React.Component {
       const newProjects = copyProjects.filter(
         (project) => project.id !== this.props.robot.projectId
       );
+
       this.props.robot.projectId = null;
 
       await this.setState({
@@ -35,11 +36,14 @@ export default class UnassignRobot extends React.Component {
 
       await axios.put(`../api/robots/${this.props.robot.id}`, this.state.robot);
 
+      const res = await axios.get(
+        `../api/robots/${this.props.robot.id}/projects`
+      );
       // const res2 = await axios.get(
       //   `../api/robots/${this.props.robot.id}/projects`
       // );
 
-      this.props.update(newProjects);
+      this.props.update(res.data);
     } catch (error) {
       console.log(error);
     }

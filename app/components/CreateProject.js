@@ -29,7 +29,6 @@ export default class CreateProject extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div>
         <h3>Create New Project:</h3>

@@ -35,7 +35,7 @@ class SingleRobot extends React.Component {
     });
   }
 
-  unassignRobot(robot, projects) {
+  unassignRobot(projects) {
     this.setState({
       projects: projects,
     });

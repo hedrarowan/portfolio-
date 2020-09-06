@@ -12,23 +12,30 @@ export class UnassignProject extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  async componentDidMount() {
+    this.setState({
+      project: this.props.project,
+      robots: this.props.robots,
+    });
+  }
+
   async handleClick(event) {
     try {
       event.preventDefault();
-      const copyRobots = this.props.robots.slice();
 
-      const newRobots = copyRobots.filter(
-        (robot) => robot.projectId !== this.props.project.id
-      );
+      this.props.robot.projectId = null;
 
       await this.setState({
         project: this.props.project,
-        robots: newRobots,
       });
 
-      await axios.put(`../api/projects/${this.state.project.id}`, this.state);
+      console.log(this.state);
+      await axios.put(`../api/robots/${this.props.robot.id}`, this.props.robot);
+      const res = await axios.get(
+        `../api/projects/${this.props.project.id}/robots`
+      );
 
-      this.props.update(this.state.project, this.state.robots);
+      this.props.update(res.data);
     } catch (error) {
       console.log(error);
     }
