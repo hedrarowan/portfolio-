@@ -9,24 +9,19 @@ module.exports = db.define("project", {
       notEmpty: true,
     },
   },
-  deadline: {
-    type: Sequelize.DATE,
-    validate: {
-      isDate: true,
-    },
-  },
-  priority: {
-    type: Sequelize.INTEGER,
-    validate: {
-      min: 1,
-      max: 10,
-    },
-  },
   completed: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false,
+    type: Sequelize.STRING,
+
   },
   description: {
     type: Sequelize.STRING,
   },
+
+  mediaUrl: {
+    type: Sequelize.STRING,
+  },
+
+  longDescription: {
+    type: Sequelize.TEXT,
+  }
 });

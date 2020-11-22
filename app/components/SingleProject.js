@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import UpdateProject from "./UpdateProject";
 import { NavLink } from "react-router-dom";
 import UnassignProject from "./UnassignProject";
+import YouTube from 'react-youtube';
 
 export class SingleProject extends React.Component {
   constructor(props) {
@@ -13,8 +14,7 @@ export class SingleProject extends React.Component {
       project: {},
       robots: [],
     };
-    this.updateProjects = this.updateProjects.bind(this);
-    this.unassignProject = this.unassignProject.bind(this);
+
   }
   async componentDidMount() {
     const projectId = await this.props.match.params.projectId;
@@ -23,64 +23,48 @@ export class SingleProject extends React.Component {
       project: this.props.project,
       robots: this.props.robots,
     });
+
   }
 
-  updateProjects(project) {
-    this.setState({
-      project: project,
-      robots: [],
-    });
-  }
-
-  unassignProject(robots) {
-    this.setState({
-      robots: robots,
-    });
-  }
 
   render() {
     let project;
     let robots;
 
+
     if (this.state.project === undefined) {
       project = this.props.project;
+
     } else {
       project = this.state.project;
       robots = this.state.robots;
+
     }
+
+    let videoId = String(String(project.mediaUrl).slice(String(project.mediaUrl).lastIndexOf('=') + 1))
+
+
+    const opts = {
+      height: '390',
+      width: '640',
+      playerVars: {
+        // https://developers.google.com/youtube/player_parameters
+        autoplay: 1,
+      },
+    };
+
     return (
       <div id="single-project" className="body">
         <h3>
           <i>{project.title}</i>
         </h3>
-        <h3>Deadline: {project.deadline}</h3>
-        <h3>priority: {project.priority}</h3>
-        <h3>description: {project.description}</h3>
-        <h3>completed: {project.completed}</h3>
-        <h3>
-          <i>robots: </i>
-        </h3>
-        {robots === "No Robots Currently" ||
-        robots === null ||
-        robots === undefined ||
-        robots.length === 0 ? (
-          <h4 className="no-robots">No Robots Currently Assigned</h4>
-        ) : (
-          <ul className="project-robots">
-            {robots.map((robot) => (
-              <div key={robot.id}>
-                <UnassignProject
-                  project={project}
-                  robot={robot}
-                  robots={robots}
-                  update={this.unassignProject}
-                />
-                <li>{robot.name}</li>
-              </div>
-            ))}
-          </ul>
-        )}
-        <UpdateProject project={project} update={this.updateProjects} />
+        <h3>{project.description}</h3>
+        <h3>{project.completed}</h3>
+
+        <div id='long'>
+          <h4><i>{project.longDescription}</i></h4>
+        </div>
+        <YouTube videoId={videoId} opts={opts} />
         <NavLink to="/projects">Back</NavLink>
       </div>
     );

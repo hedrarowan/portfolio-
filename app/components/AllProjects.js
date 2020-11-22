@@ -2,8 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchProjects } from "../redux/projects";
 import { NavLink } from "react-router-dom";
-import CreateProject from "./CreateProject";
-import DeleteProject from "./DeleteProject";
+
 
 export class AllProjects extends React.Component {
   constructor(props) {
@@ -11,8 +10,6 @@ export class AllProjects extends React.Component {
     this.state = {
       projects: [],
     };
-    this.addProject = this.addProject.bind(this);
-    this.deleteProject = this.deleteProject.bind(this);
   }
 
   async componentDidMount() {
@@ -23,27 +20,6 @@ export class AllProjects extends React.Component {
     });
   }
 
-  addProject(project) {
-    const copyOfState = this.state.projects.slice();
-    this.setState({
-      projects: [...copyOfState, project],
-    });
-  }
-
-  async deleteProject(project) {
-    const currentProject = project;
-    const copyProjects = this.state.projects.slice();
-    copyProjects.map((project, index) => {
-      if (copyProjects[index] === currentProject) {
-        return copyProjects.splice(index, 1);
-      } else {
-        return project;
-      }
-    });
-    this.setState({
-      projects: [...copyProjects],
-    });
-  }
 
   render() {
     if (
@@ -61,22 +37,14 @@ export class AllProjects extends React.Component {
             {projects.map((project) => {
               return (
                 <li key={project.id}>
-                  <DeleteProject
-                    project={project}
-                    delete={this.deleteProject}
-                  />
                   <NavLink to={`/projects/${project.id}`}>
                     <h3>{project.title}</h3>
                   </NavLink>
-                  <span>Deadline: {project.deadline}</span>
+                  <span>{project.completed}</span>
                 </li>
               );
             })}
           </ul>
-          <CreateProject
-            projects={this.props.projects}
-            addProject={this.addProject}
-          />
         </div>
       );
     }
