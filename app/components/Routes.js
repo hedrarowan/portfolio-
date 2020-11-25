@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import About from "./About";
 import AllProjects from "./AllProjects";
 import SingleProject from "./SingleProject";
+import p5Play from './p5Play'
 
 const Routes = () => {
   return (
@@ -42,6 +43,7 @@ const Routes = () => {
           </nav>
           <Route exact path="/about" component={About} />
           <Route exact path="/projects" component={AllProjects} />
+          <Route exact path="/p5" component={p5Play} />
           <Route path="/projects/:projectId" component={SingleProject} />
         </main>
       </div>

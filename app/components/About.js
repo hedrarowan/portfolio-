@@ -19,7 +19,7 @@ export default class About extends React.Component {
         release: 0.4,
       }
     }).toDestination()
-    this.handleClick = this.handleClick.bind(this)
+    console.log(this)
   }
 
   handleClick() {
