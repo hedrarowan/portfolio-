@@ -5,8 +5,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -106,6 +105,11 @@ main {
   border: groove;
 }
 
+.projectsWheel {
+  display: flex;
+  flex-direction: row;
+}
+
 #single-project {
   display: flex;
   flex-direction: column;
@@ -116,4 +120,8 @@ main {
 #long {
   padding-left: 200px;
   padding-right: 200px;
+}
+#defaultCanvas0 {
+  display: 'flex';
+  padding-top: 10px;
 }

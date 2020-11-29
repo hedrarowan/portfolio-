@@ -1,5 +1,6 @@
 import React from "react";
 import * as Tone from 'tone'
+import P5Play from './p5Play'
 
 
 export default class About extends React.Component {
@@ -19,6 +20,7 @@ export default class About extends React.Component {
         release: 0.4,
       }
     }).toDestination()
+    this.handleClick = this.handleClick.bind(this)
     console.log(this)
   }
 
@@ -36,10 +38,12 @@ export default class About extends React.Component {
         </div>
         <div className='headshot'>
         <img src="headshot.jpg" width="500" height="600" onClick={this.handleClick}></img>
+        <P5Play/>
         </div>
 
         </div>
       );
     }
   }
+
 
