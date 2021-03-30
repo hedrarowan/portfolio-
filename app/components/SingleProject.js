@@ -1,10 +1,10 @@
 import React from "react";
-import axios from "axios";
+
 import { fetchProject } from "../redux/singleProject";
 import { connect } from "react-redux";
-import UpdateProject from "./UpdateProject";
+
 import { NavLink } from "react-router-dom";
-import UnassignProject from "./UnassignProject";
+
 import YouTube from 'react-youtube';
 
 export class SingleProject extends React.Component {
@@ -64,8 +64,11 @@ export class SingleProject extends React.Component {
         <div id='long'>
           <h4><i>{project.longDescription}</i></h4>
         </div>
-        <YouTube videoId={videoId} opts={opts} />
+        {project.mediaType === 'yt' ? <YouTube videoId={videoId} opts={opts} /> : <a href={project.mediaUrl}>{project.mediaUrl}</a>}
+        <div>
         <NavLink to="/projects">Back</NavLink>
+        </div>
+        
       </div>
     );
   }

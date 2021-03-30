@@ -134,7 +134,8 @@ class P5Play extends React.Component {
       
       } else {
         if(sketch.mouseX > x) {
-         console.log(this)
+        //  console.log(this)
+       
          //figure out how to call P5Play's handlevisbility 
         }
       }      
@@ -152,9 +153,10 @@ class P5Play extends React.Component {
 
   
   handleVisibility = () => {
-    this.setState({
-      visibility: true
-    })
+    console.log('hellooko')
+    // this.setState({
+    //   visibility: true
+    // })
   }
 
   handleClick = () => {
@@ -170,9 +172,9 @@ class P5Play extends React.Component {
       console.log(this.state.projects)
       const projects = this.state.projects
       return (
-        <div className='projectsWheel'>
+        <div className='projectsWheel' onClick={this.handleVisibility}>
         <button onClick={this.handleClick}>Hello</button>
-        <div className="canvas" ref={this.myRef} onClick={this.handleClick}>
+        <div className="canvas" ref={this.myRef} onClick={this.handleVisibility}>
           {this.state.visibility ? <NavLink to={`/projects/${projects[0].id}`}>
             <h3>{projects[0].title}</h3>
           </NavLink> : null}
