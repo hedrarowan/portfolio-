@@ -14,8 +14,12 @@ const pkg = require('../../package.json');
 const dbName = process.env.NODE_ENV === 'test' ? `${pkg.name}_test` : pkg.name;
 console.log(chalk.yellow(`Opening database connection to ${dbName}`));
 
-const db = new Sequelize(`postgres://localhost:5432/hedraprojects`, {
+const db = new Sequelize(`postgres://jambjpzdmuhrzs:b1c757fb96cbb0593ccdb667bab56cf6a8e6f11930ca9067b0d63781f634f909@ec2-52-45-73-150.compute-1.amazonaws.com:5432/d3t5tesn196aqq`, {
   logging: false,
+  "dialect": 'postgres',
+  "dialectOptions": {
+    "ssl" : true
+  }
 });
 
 module.exports = db;
