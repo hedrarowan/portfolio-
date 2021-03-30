@@ -8,7 +8,7 @@
     "start-server": "nodemon main.js -e html,js,css --ignore public",
     "build-watch": "webpack -w",
     "test": "NODE_ENV='test' mocha  ./tests --recursive --watch --require babel-polyfill --require babel-register",
-    "start": "echo 'Running server for production - developers, use npm run start-dev for development' && node main",
+    "start": "echo 'Running server for production - developers, use npm run start-dev for development' && node main.js",
     "seed": "node seed.js"
   },
   "keywords": [
@@ -17,7 +17,7 @@
     "skeleton"
   ],
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "chalk": "^2.4.1",
     "cli": "^1.0.1",
@@ -63,7 +63,6 @@
     "sinon-chai": "^3.5.0",
     "style-loader": "^0.21.0",
     "supertest": "^3.1.0",
-   
     "wait-for-expect": "^3.0.2",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
