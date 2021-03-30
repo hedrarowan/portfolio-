@@ -23,5 +23,9 @@ module.exports = db.define("project", {
 
   longDescription: {
     type: Sequelize.TEXT,
+  },
+
+  mediaType: {
+    type: Sequelize.STRING,
   }
 });

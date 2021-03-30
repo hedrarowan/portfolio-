@@ -21,6 +21,7 @@ export default class About extends React.Component {
       }
     }).toDestination()
     this.handleClick = this.handleClick.bind(this)
+    this.handleVisibility = this.handleVisibility(this)
     console.log(this)
   }
 
@@ -29,16 +30,19 @@ export default class About extends React.Component {
     this.audio.triggerAttackRelease("C4", "8n")
   }
 
+  handleVisibility(){
+    console.log("FUXK")
+  }
+
   render() {
 
       return (
         <div>
         <div className="about">
-          <h3>Hi! I'm a software engineer, composer and performer currently located in Chicago, Il. I'm interested in interactivity and responsiveness in both music and coding. My projects often involve generative sound or visual elements. Right now, I'm freelancing, but I'd really love to work for you. Click on my face to make a sound: </h3>
+          <h3>Hi! I'm a software engineer, composer and performer currently located in Chicago, Il. I'm interested in interactivity and responsiveness in both music and coding. My projects often involve generative sound or visual elements. Right now, I'm freelancing, but I'd really love to work for you.</h3>
         </div>
         <div className='headshot'>
         <img src="headshot.jpg" width="500" height="600" onClick={this.handleClick}></img>
-        <P5Play/>
         </div>
 
         </div>

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import About from "./About";
 import AllProjects from "./AllProjects";
 import SingleProject from "./SingleProject";
+import Resume from './resume'
 import p5Play from './p5Play'
 
 const Routes = () => {
@@ -14,13 +15,13 @@ const Routes = () => {
           <img></img>
           <nav>
             <NavLink
-              to="/"
+              to="/resume"
               activeStyle={{
                 fontWeight: "bold",
                 color: "white",
               }}
             >
-              ...Home...
+              ...Resume...
             </NavLink>
             <NavLink
               to="/about"
@@ -41,9 +42,9 @@ const Routes = () => {
               ...Projects...
             </NavLink>
           </nav>
+          <Route exact path='/resume' component={Resume} />
           <Route exact path="/about" component={About} />
           <Route exact path="/projects" component={AllProjects} />
-          <Route exact path="/p5" component={p5Play} />
           <Route path="/projects/:projectId" component={SingleProject} />
         </main>
       </div>

@@ -125,3 +125,38 @@ main {
   display: 'flex';
   padding-top: 10px;
 }
+
+#resume-header {
+  display: 'flex';
+  flex-direction: 'column';
+  align-items: "center";
+}
+
+.phone-email {
+  display: flex;
+  flex-grow: 2;
+  flex-direction: 'row';
+  align-items: 'center';
+  justify-content: 'space-between';
+}
+
+#brain-teez {
+  display: flex;
+  flex-direction: 'row';
+}
+
+.project-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.project-header {
+  display: flex;
+}
+
+.basic-flex {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
