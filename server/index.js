@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // static middleware
-app.use('/static', express.static(path.join(__dirname, "../public")));
+app.use(express.static(path.join(__dirname, "../public")));
 
 
 
