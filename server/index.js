@@ -13,6 +13,7 @@ const debug = process.env.NODE_ENV === "test";
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+console.log(path.join(__dirname), '../public')
 
 // static middleware
 app.use(express.static(path.join(__dirname, "../public")));
