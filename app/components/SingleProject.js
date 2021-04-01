@@ -7,22 +7,69 @@ import { NavLink } from "react-router-dom";
 
 import YouTube from 'react-youtube';
 
+let projects = [
+  {
+    id: 1,
+
+    title: 'BrainTeez',
+    completed: 'September 2020 - October 2020',
+
+    description: "Mobile remote learning app for Kids grades K-2",
+
+    mediaUrl: "https://www.youtube.com/watch?v=J4UF711Ofc0",
+
+    longDescription: "Mobile remote learning app for Kids grades K-2",
+
+    mediaType: "yt"
+  },
+
+  {
+    id: 2,
+
+    title: "deadnameKiller",
+
+    completed: 'November 2020',
+
+    description: "Google Chrome Extension to replace Trans people's birth names (deadnames) and replace them with their real names",
+
+    mediaUrl : 'https://www.github.com/hedrarowan/deadnamekiller',
+
+    longDescription: "Google Chrome Extension to replace Trans people's birth names (deadnames) and replace them with their real names",
+
+    mediaType: 'gh'
+  }
+
+
+]
+
 export class SingleProject extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       project: {},
-      robots: [],
+
     };
 
   }
   async componentDidMount() {
+    let project = {}
+
     const projectId = await this.props.match.params.projectId;
-    await this.props.getProject(projectId);
+
+    for (let i = 0; i < projects.length; i++) {
+      if(projects[i].id === Number(projectId)) {
+        project = projects[i]
+        console.log(project)
+      } else {
+        console.log(projects[i].id, projectId, 'waittt')
+      }
+    }
     await this.setState({
-      project: this.props.project,
-      robots: this.props.robots,
+      project: project
+
     });
+
+    console.log(project)
 
   }
 
@@ -68,7 +115,7 @@ export class SingleProject extends React.Component {
         <div>
         <NavLink to="/projects">Back</NavLink>
         </div>
-        
+
       </div>
     );
   }

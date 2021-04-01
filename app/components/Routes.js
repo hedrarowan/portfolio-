@@ -4,7 +4,7 @@ import About from "./About";
 import AllProjects from "./AllProjects";
 import SingleProject from "./SingleProject";
 import Resume from './resume'
-import p5Play from './p5Play'
+
 
 const Routes = () => {
   return (

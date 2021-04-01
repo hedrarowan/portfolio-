@@ -1,30 +1,53 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchProjects } from "../redux/projects";
 import { NavLink } from "react-router-dom";
+
+import projects from '../components/projectsinfo'
 
 
 export class AllProjects extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      projects: [],
+      projects: [{
+        id: 1,
+
+        title: 'BrainTeez',
+        completed: 'September 2020 - October 2020',
+
+        description: "Mobile remote learning app for Kids grades K-2",
+
+        mediaUrl: "https://www.youtube.com/watch?v=J4UF711Ofc0",
+
+        longDescription: "Mobile remote learning app for Kids grades K-2",
+
+        mediaType: "yt"
+      },
+
+      {
+        id: 2,
+
+        title: "deadnameKiller",
+
+        completed: 'November 2020',
+
+        description: "Google Chrome Extension to replace Trans people's birth names (deadnames) and replace them with their real names",
+
+        mediaUrl : 'https://www.github.com/hedrarowan/deadnamekiller',
+
+        longDescription: "Google Chrome Extension to replace Trans people's birth names (deadnames) and replace them with their real names",
+
+        mediaType: 'gh'
+      }],
     };
   }
 
-  async componentDidMount() {
-    await this.props.getProjects();
-    const projects = this.props.projects;
-    this.setState({
-      projects: projects,
-    });
-  }
+
+
 
 
   render() {
     if (
-      this.props.projects.length === 0 ||
-      this.props.projects === undefined ||
       this.state.projects === undefined ||
       this.state.projects === 0
     ) {

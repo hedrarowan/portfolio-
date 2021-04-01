@@ -11,13 +11,13 @@ export default class Resume extends React.Component {
               <div className="phone-email">
                 <h3>(978) 888 8061 |</h3> <h3>| hedrarowan@gmail.com </h3>
               </div>
-              
+
               <div className="phone-email">
                 <a href='https://github.com/hedrarowan'><h3>GitHub</h3></a>
                 <h3>| |</h3>
                 <a href='https://linkedin.com/in/hedra-rowan-471a561aa/'><h3>Linkedin</h3></a>
               </div>
-              
+
           </div>
 
           <div id="projects-resume">
@@ -30,10 +30,10 @@ export default class Resume extends React.Component {
                          <h4>educational gaming app for kids grades K-2</h4>
                       </div>
                       <div className="basic-flex">
-                        <h4><i>Developer</i></h4> 
+                        <h4><i>Developer</i></h4>
                         <h4>September 2020-October 2020</h4>
                       </div>
-                      
+
 
                       <ul>
                           <li>Focused on game functionality, levels, and styling</li>
@@ -43,7 +43,7 @@ export default class Resume extends React.Component {
                           </li>
                       </ul>
                   </div>
-                  
+
               </div>
 
               <div id="Draw-Synth">
@@ -54,10 +54,10 @@ export default class Resume extends React.Component {
                          <h4>coloring application with auto-generated audio based on user input</h4>
                       </div>
                       <div className="basic-flex">
-                        <h4><i>Sole Developer</i></h4> 
+                        <h4><i>Sole Developer</i></h4>
                         <h4>September 2020</h4>
                       </div>
-                      
+
 
                       <ul>
                           <li>Used Node.js, SuperCollider, supercolliderjs, and HTML/CSS</li>
@@ -66,9 +66,9 @@ export default class Resume extends React.Component {
                           </li>
                       </ul>
                   </div>
-                  
+
               </div>
-              
+
 
           </div>
 
@@ -81,7 +81,7 @@ export default class Resume extends React.Component {
                         <h4><i>Senior Content Screener</i></h4>
                     </div>
                         <div className="basic-flex">
-                        <h4>Chicago, IL</h4> 
+                        <h4>Chicago, IL</h4>
                         <h4>February 2018 - April 2020</h4>
                       </div>
 
@@ -89,7 +89,7 @@ export default class Resume extends React.Component {
                           <li>Managed a team monitoring television content and format pre-airing</li>
                           <li>Ensure all TV programs/films complied with FCC standards</li>
                       </ul>
-                    
+
 
                 </div>
 
@@ -100,7 +100,7 @@ export default class Resume extends React.Component {
                         <h4><i>Sales Associate</i></h4>
                     </div>
                         <div className="basic-flex">
-                        <h4>Evanston, IL</h4> 
+                        <h4>Evanston, IL</h4>
                         <h4>February 2016 - February 2018</h4>
                       </div>
 
@@ -108,7 +108,7 @@ export default class Resume extends React.Component {
                           <li>Maintained a buy-and-sell used bookstore during open hours</li>
                           <li>Responsible for customer relations, organization, and intake</li>
                       </ul>
-                    
+
                 </div>
 
           </div>
@@ -147,7 +147,7 @@ export default class Resume extends React.Component {
 
           </div>
 
-          <div classname="tech-resume">
+          <div className="tech-resume">
               <h2><u>Technical Skills</u></h2>
 
               <h4>Proficient: Javascript, Node.js, Express, React, Redux, Max/MSP, Git, GitHub, HTML/CSS, React Native, Expo </h4>
