@@ -67,7 +67,14 @@ export class AllProjects extends React.Component {
                 </li>
               );
             })}
+            <li key='drawsynth'>
+              <NavLink to={"/DrawSynth"}>
+                <h3>DrawSynth</h3>
+              </NavLink>
+              <span>September 2020; April 2021</span>
+            </li>
           </ul>
+
         </div>
       );
     }

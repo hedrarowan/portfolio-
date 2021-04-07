@@ -49,7 +49,7 @@ export default class Resume extends React.Component {
               <div id="Draw-Synth">
                   <div className="project-body">
                       <div className="project-header">
-                        <h3>Draw Synth</h3>
+                      <a href='/DrawSynth'><h3>DrawSynth</h3></a>
                          <h3>||</h3>
                          <h4>coloring application with auto-generated audio based on user input</h4>
                       </div>

@@ -4,6 +4,7 @@ import About from "./About";
 import AllProjects from "./AllProjects";
 import SingleProject from "./SingleProject";
 import Resume from './resume'
+import Home from './DrawSynth'
 
 
 const Routes = () => {
@@ -46,6 +47,7 @@ const Routes = () => {
           <Route exact path="/about" component={About} />
           <Route exact path="/projects" component={AllProjects} />
           <Route path="/projects/:projectId" component={SingleProject} />
+          <Route path="/DrawSynth" component={Home}/>
         </main>
       </div>
     </Router>
