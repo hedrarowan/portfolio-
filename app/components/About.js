@@ -1,6 +1,6 @@
 import React from "react";
 import * as Tone from 'tone'
-import P5Play from './p5Play'
+
 
 
 export default class About extends React.Component {
