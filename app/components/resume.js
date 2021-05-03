@@ -1,13 +1,17 @@
 import React from 'react'
-
+import {NavLink} from 'react-router-dom'
 
 export default class Resume extends React.Component {
     render() {
 
         return (
         <div>
+        <div style={{fontSize: '150%', margin: '25%'}}>
           <div id="resume-header">
-              <h1>Hedra Rowan</h1>
+              <NavLink to='/'>
+                  <h1>Hedra Rowan</h1>
+              </NavLink>
+
               <div className="phone-email">
                 <h3>(978) 888 8061 |</h3> <h3>| hedrarowan@gmail.com </h3>
               </div>
@@ -155,6 +159,32 @@ export default class Resume extends React.Component {
               <h4>Basic: Mocha, Chai, SuperCollider</h4>
           </div>
 
+        </div>
+
+        <div className='headshot'>
+        <img src="backgroundstars.jpg" width="33%" height="300" alignItems="right" onClick={this.handleClick}></img>
+
+        <NavLink to="/about"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            margin: '15%',
+            fontSize:'180%'
+          }}>
+          About
+          </NavLink>
+
+
+        <NavLink to="/projects" style={{display: 'flex', alignItems: 'center',
+        margin: '15%',
+        fontSize:'180%'}}>Projects
+        </NavLink>
+
+
+
+
+
+        </div>
         </div>
 
 

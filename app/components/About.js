@@ -1,7 +1,6 @@
 import React from "react";
 import * as Tone from 'tone'
-
-
+import {NavLink} from 'react-router-dom'
 
 export default class About extends React.Component {
   constructor (props) {
@@ -22,7 +21,7 @@ export default class About extends React.Component {
     }).toDestination()
     this.handleClick = this.handleClick.bind(this)
     this.handleVisibility = this.handleVisibility(this)
-    console.log(this)
+
   }
 
   handleClick() {
@@ -31,7 +30,7 @@ export default class About extends React.Component {
   }
 
   handleVisibility(){
-    console.log("FUXK")
+
   }
 
   render() {
@@ -39,10 +38,19 @@ export default class About extends React.Component {
       return (
         <div>
         <div className="about">
-          <h3>Hi! I'm a software engineer, composer and performer currently located in Chicago, Il. I'm interested in interactivity and responsiveness in both music and coding. My projects often involve generative sound or visual elements. Right now, I'm freelancing, but I'd really love to work for you.</h3>
+          <h2>Hi! I'm a software engineer, composer and performer currently located in Chicago, Il. I'm interested in interactivity and responsiveness in both music and coding. My projects often involve generative sound or visual elements. I work with Node.js, React, Redux, PostgreSQL, and sometimes React Native and Firebase. Right now, I'm freelancing, but I'd really love to work for you.
+
+          </h2>
         </div>
         <div className='headshot'>
-        <img src="headshot.jpg" width="500" height="600" onClick={this.handleClick}></img>
+        <div>
+        <NavLink to="/resume" style={{display: 'flex', alignItems: 'center', marginLeft: '-120%', fontSize:'180%'}}>Resume</NavLink>
+        </div>
+        <img src="headshot.jpg" width="250" height="300" onClick={this.handleClick}></img>
+        <div>
+        <NavLink to="/projects" style={{display: 'flex', alignItems: 'center', marginLeft: '120%', fontSize:'180%'}}>Projects</NavLink>
+        </div>
+
         </div>
 
         </div>
