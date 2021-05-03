@@ -55,6 +55,7 @@ export class AllProjects extends React.Component {
     } else {
       const projects = this.state.projects.slice();
       return (
+        <div>
         <div className="projects">
           <ul>
             {projects.map((project) => {
@@ -74,8 +75,33 @@ export class AllProjects extends React.Component {
               <span>September 2020; April 2021</span>
             </li>
           </ul>
+        </div>
+      <div className='headshot'>
+
+
+        <NavLink to="/resume"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            margin: '15%',
+            fontSize:'180%'
+          }}>
+          Resume
+          </NavLink>
+
+
+        <NavLink to="/about" style={{display: 'flex', alignItems: 'center',
+        margin: '15%',
+        fontSize:'180%'}}>About
+        </NavLink>
+
+
+        <img src="backgroundstars.jpg" width="33%" height="300" alignItems="right" onClick={this.handleClick}></img>
+
 
         </div>
+
+      </div>
       );
     }
   }
