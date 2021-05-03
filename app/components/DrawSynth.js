@@ -248,12 +248,12 @@ export default class Home extends React.Component {
     return (
       <div>
         <div>
-          <button className="button">
+          <h3 style={{display: 'flex', justifyContent: 'center', fontSize:'140%'}}>
             DrawSynth
-          </button>
-          <button className="descriptor">
+          </h3>
+          <h3 style={{display: 'flex', justifyContent: 'center', fontSize:'140%'}}>
             Color in the gradient with the mouse to complete the level! Make sure audio is on!
-          </button>
+          </h3>
 
           {this.state.loading ? <LoadingSpinner /> : null}
         </div>
