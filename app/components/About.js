@@ -1,8 +1,6 @@
 import React from "react";
 import * as Tone from 'tone'
 
-
-
 export default class About extends React.Component {
   constructor (props) {
     super(props)
@@ -22,7 +20,7 @@ export default class About extends React.Component {
     }).toDestination()
     this.handleClick = this.handleClick.bind(this)
     this.handleVisibility = this.handleVisibility(this)
-    console.log(this)
+
   }
 
   handleClick() {
@@ -31,7 +29,7 @@ export default class About extends React.Component {
   }
 
   handleVisibility(){
-    console.log("FUXK")
+
   }
 
   render() {
@@ -39,10 +37,10 @@ export default class About extends React.Component {
       return (
         <div>
         <div className="about">
-          <h3>Hi! I'm a software engineer, composer and performer currently located in Chicago, Il. I'm interested in interactivity and responsiveness in both music and coding. My projects often involve generative sound or visual elements. Right now, I'm freelancing, but I'd really love to work for you.</h3>
+          <h2>Hi! I'm a software engineer, composer and performer currently located in Chicago, Il. I'm interested in interactivity and responsiveness in both music and coding. My projects often involve generative sound or visual elements. Right now, I'm freelancing, but I'd really love to work for you.</h2>
         </div>
         <div className='headshot'>
-        <img src="headshot.jpg" width="500" height="600" onClick={this.handleClick}></img>
+        <img src="headshot.jpg" width="250" height="300" onClick={this.handleClick}></img>
         </div>
 
         </div>

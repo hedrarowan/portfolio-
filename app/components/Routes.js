@@ -5,6 +5,7 @@ import AllProjects from "./AllProjects";
 import SingleProject from "./SingleProject";
 import Resume from './resume'
 import Home from './DrawSynth'
+import NewNav from './NewNav'
 
 
 const Routes = () => {
@@ -12,14 +13,13 @@ const Routes = () => {
     <Router>
       <div>
         <main>
-          <h1>Hedra Rowan</h1>
-          <img></img>
-          <nav>
+          {/* <nav>
             <NavLink
               to="/resume"
               activeStyle={{
                 fontWeight: "bold",
-                color: "white",
+                // color: white,
+
               }}
             >
               ...Resume...
@@ -28,7 +28,8 @@ const Routes = () => {
               to="/about"
               activeStyle={{
                 fontWeight: "bold",
-                color: "pink",
+                // color: white,
+
               }}
             >
               ...About...
@@ -37,15 +38,17 @@ const Routes = () => {
               to="/projects"
               activeStyle={{
                 fontWeight: "bold",
-                color: "pink",
+                // color:white,
               }}
             >
               ...Projects...
             </NavLink>
-          </nav>
+          </nav> */}
+          <Route exact path='/' component={NewNav} />
           <Route exact path='/resume' component={Resume} />
           <Route exact path="/about" component={About} />
           <Route exact path="/projects" component={AllProjects} />
+          <Route exact path="/newnav" component={NewNav} />
           <Route path="/projects/:projectId" component={SingleProject} />
           <Route path="/DrawSynth" component={Home}/>
         </main>
