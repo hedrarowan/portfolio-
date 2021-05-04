@@ -8,17 +8,17 @@
   font-family: "Corporate Gothic NBP";
   src: local("Corporate Gothic NBP"),
     url(./fonts/CorporateGothic/CorporateGothicNbpRegular-YJJ2.ttf);
-  text-shadow: 1px 1px #000000;
+  text-shadow: 1px 1px rgb(0, 0, 0);
 }
-/*
+
 body {
-  background: linear-gradient(#7fffd4, #ff00ff);
-  height: 500vh;
+  background-color: black;
+
   padding: 0;
   margin: 0;
-  width: 100vw;
 
-} */
+
+}
 
 nav {
   align-items: center;
@@ -49,14 +49,18 @@ main {
 }
 
 .projects {
-  padding: 25px;
-  margin-top: 20%;
+  padding: 50px;
+  margin-top: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
   margin-bottom: 20%;
+  justify-content: center;
   /* background-color: "violet"; */
   font-size: 25pt;
   border-style: groove;
   border-width: 10%;
   border-radius: 1%;
+  background-color: slategrey;
 }
 
 .about {
@@ -135,6 +139,7 @@ main {
 }
 
 #single-project {
+  background-color: slategrey;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -172,12 +177,18 @@ main {
 
 #brain-teez {
   display: flex;
+  flex-grow: 3;
   flex-direction: "row";
+  justify-content: space-evenly";
 }
 
 .project-body {
   display: flex;
   flex-direction: column;
+  /* background-color: slategrey;
+  border-style: groove;
+  border-radius: 1%; */
+
 }
 
 .project-header {

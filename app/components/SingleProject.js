@@ -18,7 +18,7 @@ let projects = [
 
     mediaUrl: "https://www.youtube.com/watch?v=J4UF711Ofc0",
 
-    longDescription: "Mobile remote learning app for Kids grades K-2",
+    longDescription: 'In 2020, many kids found themselves learning remotely for the first time. For our capstone project at Grace Hopper,my team created an iOS app with educational games for young children. We ended up creating three games, each rendered with animations and original sound to create an immersive and fun learning experience. Children can practice pattern matching and math skills or improve their logical thinking. Each game has ten levels. I focused mainly on the interactivity of the app, written with React Native and Firebase, and the leveling process, written with Redux. It was great working as team on this to see an idea come to life from start to finish! See below for our presentation video.',
 
     mediaType: "yt"
   },
@@ -34,7 +34,7 @@ let projects = [
 
     mediaUrl : 'https://www.github.com/hedrarowan/deadnamekiller',
 
-    longDescription: "Google Chrome Extension to replace Trans people's birth names (deadnames) and replace them with their real names",
+    longDescription: "For my first chrome extension, I built a tool that allows users to avoid seeing web content containing their deadnames or the deadnames of other people. It finds the instances of the name and replaces them with user-defined current name. It also makes facebook extremely buggy, which could be considered a feature.",
 
     mediaType: 'gh'
   }
@@ -57,11 +57,9 @@ export class SingleProject extends React.Component {
     const projectId = await this.props.match.params.projectId;
 
     for (let i = 0; i < projects.length; i++) {
-      if(projects[i].id === Number(projectId)) {
+      if (projects[i].id === Number(projectId)) {
         project = projects[i]
         console.log(project)
-      } else {
-        console.log(projects[i].id, projectId, 'waittt')
       }
     }
     await this.setState({
@@ -76,7 +74,7 @@ export class SingleProject extends React.Component {
 
   render() {
     let project;
-    let robots;
+
 
 
     if (this.state.project === undefined) {
@@ -84,7 +82,7 @@ export class SingleProject extends React.Component {
 
     } else {
       project = this.state.project;
-      robots = this.state.robots;
+
 
     }
 
@@ -124,7 +122,7 @@ export class SingleProject extends React.Component {
 const mapStateToProps = (state) => {
   return {
     project: state.singleProject.project,
-    robots: state.singleProject.robots,
+
   };
 };
 
