@@ -1,37 +1,8 @@
-import React from "react";
-import * as Tone from 'tone'
-import {NavLink} from 'react-router-dom'
+import React from 'react';
+import NewNav from './NewNav'
 
 export default class About extends React.Component {
-  constructor (props) {
-    super(props)
-    this.audio = new Tone.Synth({
-      oscillator: {
-        type: 'fatsawtooth15',
-        harmonicity: 0.8,
-        modulationType: 'triangle'
-      },
 
-      envelope: {
-        attack: 0,
-        decay: 0.2,
-        sustain: 0.2,
-        release: 0.4,
-      }
-    }).toDestination()
-    this.handleClick = this.handleClick.bind(this)
-    this.handleVisibility = this.handleVisibility(this)
-
-  }
-
-  handleClick() {
-    Tone.start()
-    this.audio.triggerAttackRelease("C4", "8n")
-  }
-
-  handleVisibility(){
-
-  }
 
   render() {
 
@@ -42,20 +13,10 @@ export default class About extends React.Component {
 
           </h2>
         </div>
-        <div className='headshot'>
-        <div>
-        <NavLink to="/resume" style={{display: 'flex', alignItems: 'center', marginLeft: '-120%', fontSize:'180%'}}>Resume</NavLink>
-        </div>
-        <img src="headshot.jpg" width="250" height="300" onClick={this.handleClick}></img>
-        <div>
-        <NavLink to="/projects" style={{display: 'flex', alignItems: 'center', marginLeft: '120%', fontSize:'180%'}}>Projects</NavLink>
-        </div>
 
-        </div>
-
+        <NewNav page="about" />
         </div>
       );
     }
   }
-
 
