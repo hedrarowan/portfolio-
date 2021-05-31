@@ -5,10 +5,8 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Corporate Gothic NBP";
-  src: local("Corporate Gothic NBP"),
-    url(./fonts/CorporateGothic/CorporateGothicNbpRegular-YJJ2.ttf);
-  text-shadow: 1px 1px rgb(0, 0, 0);
+  font-family: "Titillium Web";
+
 }
 
 body {
